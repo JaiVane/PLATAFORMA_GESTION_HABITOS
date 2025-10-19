@@ -1,48 +1,51 @@
-
-import { useState,useEffect } from 'react';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Login from './Login';
 import Registro from './Registro';
 import '../Estilos/Bienvenida.css';
 import Footer from '../Componentes/Footer';
 
 export default function Bienvenida() {
+  const navigate = useNavigate();
   const [mostrarLogin, setMostrarLogin] = useState(false);
   const [mostrarRegistro, setMostrarRegistro] = useState(false);
-  
+
   useEffect(() => {
     const body = document.body;
     if (mostrarLogin || mostrarRegistro) {
       body.classList.add('body-bloqueado'); // Desactivar scroll
-    }else{
+    } else {
       body.classList.remove('body-bloqueado'); // Activar scroll
     }
-    return () => body.classList.remove('body-bloqueado'); // Asegurarse de activar scroll al desmontar
-    },[mostrarLogin, mostrarRegistro]);
-  
+    return () => body.classList.remove('body-bloqueado');
+  }, [mostrarLogin, mostrarRegistro]);
+
   return (
     <div className="bienvenida-container">
-      <header className='header'>
+      <header className="header">
         <h2>HabiQuest</h2>
-        <nav className='Botones'>
+        <nav className="Botones">
           <button onClick={() => setMostrarLogin(true)}>Iniciar Sesión</button>
+          <button onClick={() => setMostrarRegistro(true)}>Registrarse</button>
         </nav>
       </header>
 
-      <section className='Fondo'>
-        <div className='video-background'>
+      <section className="Fondo">
+        <div className="video-background">
           <video autoPlay loop muted playsInline className="background-video">
-            <source src="/video/futuro.mp4" type="video/mp4" />
+            <source src="/assets/213027_small.mp4" type="video/mp4" />
           </video>
         </div>
-        <div className='titulo'>
+
+        <div className="titulo">
           <h1>Bienvenido a HabiQuest</h1>
           <p>
-            "Tu camino hacia una vida más organizada y saludable comienza aquí.
-            Conquista tus hábitos y mejora tu vida."
+            Tu camino hacia una vida más organizada y saludable comienza aquí.
+            Conquista tus hábitos y mejora tu vida.
           </p>
         </div>
       </section>
-      
+
       <section className="info-section">
         {[
           { title: "¿Qué es HabiQuest?", text: "Una plataforma gamificada para ayudarte a construir hábitos saludables y sostenibles." },
@@ -56,9 +59,9 @@ export default function Bienvenida() {
         ))}
       </section>
 
-        <Footer />
+      <Footer />
 
-      {/*  Aquí aparece el Login como modal */}
+      {/* --- Modales de Login y Registro --- */}
       {mostrarLogin && !mostrarRegistro && (
         <Login
           onCerrar={() => setMostrarLogin(false)}
@@ -78,8 +81,6 @@ export default function Bienvenida() {
           }}
         />
       )}
-
     </div>
   );
 }
-
