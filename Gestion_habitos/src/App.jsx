@@ -36,16 +36,17 @@ export default App*/
 
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Bienvenida from './Paginas/Bienvenida';
-//import Login from './Paginas/Login';
-//import Registro from './Paginas/Registro';
+import Login  from './Paginas/Login';
+import Registro from './Paginas/Registro';
+import Footer from './Componentes/Footer';
 
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Bienvenida />} />
-        {/*<Route path="/login" element={<Login />} />
-        <Route path="/registro" element={<Registro />} />*/}
+        <Route path="/login" element={<Login />} />
+        <Route path="/registro" element={<Registro />} />
       </Routes>
     </Router>
   );
