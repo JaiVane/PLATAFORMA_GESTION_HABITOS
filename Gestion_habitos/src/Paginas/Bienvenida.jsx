@@ -6,9 +6,6 @@ export default function Bienvenida() {
     return (
         <div>
             <div className="bienvenida-container">
-
-                
-
             <header className='header'>
                 <h2>HabiQuest</h2>
                 <nav className='Botones'>
@@ -16,18 +13,22 @@ export default function Bienvenida() {
                     <button onClick={()=> navigate('/registro')}>Registrarse </button>
                 </nav>
             </header>
-            <div className='video-background'>
+
+            <section className='Fondo'>
+                <div className='video-background'>
                     <video autoPlay loop muted playsInline className="background-video">
                         <source src="/assets/213027_small.mp4" type="video/mp4" />
                     </video>
                 </div>
-            <section className='titulo'>
-                <h1>Bienvenido a HabiQuest</h1>
-                <p>
-                    Tu camino hacia una vida más organizada y saludable comienza aquí.
-                    Conquista tus habitos y mejora tu vida.
-                </p>
+                <div className='titulo'>
+                    <h1>Bienvenido a HabiQuest</h1>
+                    <p>
+                        Tu camino hacia una vida más organizada y saludable comienza aquí.
+                        Conquista tus habitos y mejora tu vida.
+                    </p>
+                </div>
             </section>
+            
 
             <section className="info-section">
             {[

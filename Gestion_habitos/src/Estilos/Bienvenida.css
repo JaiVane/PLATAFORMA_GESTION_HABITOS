@@ -3,18 +3,30 @@ html, body {
     padding: 0;
     height: 100%;
     width: 100%;
-    overflow-x: hidden;
 }
 
 .bienvenida-container {
-    position:  relative;
-    z-index: 1;
+    position:  relative ;
     width: 100%;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     border: 2px dashed red;
-    background-color: transparent; /* Color de fondo suave */ 
+/* Color de fondo suave */ 
+}
+
+.Fondo {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    /* ocupa toda la pantalla visible */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+    background-color: #000;
+    /* color de respaldo si el video no carga */
 }
 
 .video-background {
@@ -23,16 +35,17 @@ html, body {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1;
+    z-index: 0;
     overflow: hidden;
 }
+
 .background-video {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    opacity: 0.2;
-}  
-
+    opacity: 0.25;
+    /* ajusta la visibilidad del video */
+}
 
 .header {
     display: flex;
@@ -71,39 +84,47 @@ nav.Botones button:hover {
 }
 
 
-
 .titulo {
-    flex: 1;
-    min-height: calc(100vh - 80px);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 80px 5%;
     position: relative;
-    
+    z-index: 1;
+    /* encima del video */
+    color: #fff;
+    padding: 0 20px;
+    max-width: 90%;
 }
 
 .titulo h1 {
-    font-size: 90px;
+    font-size: 80px;
     color: #2CF41B;
     margin-bottom: 20px;
     font-family: 'Lobster', cursive;
-    /* borde blanco */
     -webkit-text-stroke: 2px #ffffff;
-    /* sombra elegante */
     text-shadow: 3px 3px 8px rgba(255, 255, 255, 0.6);
-} 
+}
+
 .titulo p {
-    font-size: 20px;
-    max-width: 600px;
+    font-size: 22px;
     color: #fafbfc;
     font-family: 'Great Vibes', cursive;
-    /* borde negro */
     -webkit-text-stroke: 1px #000000;
     text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+    max-width: 600px;
+    margin: 0 auto;
 }
+
+/* --- OPCIONAL: filtro oscuro sobre el video para mayor contraste --- */
+.Fondo::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    /* ajusta la oscuridad */
+    z-index: 0;
+}
+
 .info-section {
     display: flex;
     flex-wrap: wrap;

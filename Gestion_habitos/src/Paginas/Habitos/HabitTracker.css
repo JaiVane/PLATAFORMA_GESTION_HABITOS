@@ -1,0 +1,135 @@
+/* Contenedor de la tabla */
+.habit-tracker {
+  width: 95%;
+  margin: 20px auto;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Pestañas */
+.tabs {
+  margin-bottom: 15px;
+}
+.tabs button {
+  margin-right: 8px;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #eee;
+  transition: 0.3s;
+}
+.tabs button.active {
+  background-color: #4a90e2;
+  color: white;
+}
+.tabs button:hover {
+  background-color: #ddd;
+}
+
+/* Tabla */
+.tracker-table {
+  overflow-x: auto; /* scroll horizontal */
+}
+
+.tracker-table table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 600px;
+}
+
+.tracker-table th,
+.tracker-table td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* Columna fija */
+.tracker-table th:first-child,
+.tracker-table td.sticky {
+  position: sticky;
+  left: 0;
+  background-color: #f7f7f7;
+  z-index: 2;
+}
+
+/* Celdas marcadas */
+.tracker-table td.done {
+  background-color: #4a90e2;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+.tracker-table td:hover {
+  cursor: pointer;
+  background-color: #d0e6ff;
+}
+
+/* Contenedor de la tabla */
+.habit-tracker {
+  width: 95%;
+  margin: 20px auto;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Pestañas */
+.tabs {
+  margin-bottom: 15px;
+}
+.tabs button {
+  margin-right: 8px;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #eee;
+  transition: 0.3s;
+}
+.tabs button.active {
+  background-color: #4a90e2;
+  color: white;
+}
+.tabs button:hover {
+  background-color: #ddd;
+}
+
+/* Tabla */
+.tracker-table {
+  overflow-x: auto; /* scroll horizontal */
+}
+
+.tracker-table table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 600px;
+}
+
+.tracker-table th,
+.tracker-table td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* Columna fija */
+.tracker-table th:first-child,
+.tracker-table td.sticky {
+  position: sticky;
+  left: 0;
+  background-color: #f7f7f7;
+  z-index: 2;
+}
+
+/* Celdas marcadas */
+.tracker-table td.done {
+  background-color: #4a90e2;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+.tracker-table td:hover {
+  cursor: pointer;
+  background-color: #d0e6ff;
+}
