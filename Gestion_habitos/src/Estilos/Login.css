@@ -1,0 +1,243 @@
+
+  
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background-color: #ffffff;
+    padding: 30px;
+    width: 400px;
+    border-radius: 0 0 20px 20px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  }
+  
+  .flex-column > label {
+    color: #151717;
+    font-weight: 600;
+    
+  }
+  .flex-column h2{
+    color: #2d79f3;
+    margin-top: -15px;
+    
+  }
+  .inputForm {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    padding: 0.2rem 0.5rem;
+    transition: all 0.3s ease;
+  }
+  
+  .input {
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: 1rem;
+    color: #333;
+    background-color: #ffffff;
+    padding: 0.8rem;
+  }
+  .label1{
+    color: #151717;
+  }
+  .inputForm input::placeholder {
+    color: #777;
+    
+  }
+  .input:focus {
+    outline: none;
+  }
+  
+  .inputForm:focus-within {
+    border: 1.5px solid #2d79f3;
+    box-shadow: 0 0 4px rgba(26, 115, 232, 0.4);
+  }
+  
+  .flex-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .span {
+    color: #2d79f3;
+    cursor: pointer;
+    font-weight: 500;
+  }
+  
+  .button-submit {
+    margin: 20px 0 10px 0;
+    background-color: #2d79f3;
+    border: none;
+    color: white;
+    font-size: 15px;
+    font-weight: 500;
+    border-radius: 10px;
+    height: 50px;
+    width: 100%;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+  }
+  
+  .button-submit:hover {
+    background-color: #1b5edb;;
+  }
+  
+  .p {
+    text-align: center;
+    color: black;
+    font-size: 14px;
+    margin: 5px 0;
+  }
+  
+  .line {
+    position: relative;
+    text-align: center;
+    color: gray;
+    margin-top: 10px;
+  }
+  
+  .line::before,
+  .line::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 40%;
+    height: 1px;
+    background-color: #ccc;
+  }
+  
+  .line::before {
+    left: 0;
+  }
+  
+  .line::after {
+    right: 0;
+  }
+  
+  .social-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 5px;
+    justify-content: center;
+  }
+  
+  .google:hover, .facebook:hover {
+    background-color: #e0e0e0; /* A softer gray for hover effect */
+    border-color: #b0b0b0; /* Change border color to a matching gray */
+  }
+
+  .google:focus, .facebook:focus {
+    outline: none; /* Remove the blue outline on focus */
+    box-shadow: none; /* Remove any focus shadow */
+  };
+  .btn {
+    width: 100%;
+    height: 45px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
+    border: none;
+    color: white;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+    gap: 8px;
+  }
+  
+  .google, .facebook {
+    background-color: #ffffff;
+    color: #151717;
+    border: 0.1px solid #686868;
+    padding: 0;
+    width: 45px; /* Set width to match the SVG size */
+    height: 45px; /* Set height to match the SVG size */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+
+
+  
+  .btn:hover {
+    opacity: 0.9;
+  }
+  
+  /* Fondo difuminado detrás del login */
+.modal-fondo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(6px);
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+.modal-base {
+  width: 400px;
+  max-height: 90vh;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  animation: aparecer 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Contenedor del formulario modal */
+.login-modal {
+all: unset;
+}
+
+/* Header del modal */
+.login-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #2d79f3;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 15px 15px 0 0;
+}
+
+.btn-cerrar {
+  background: transparent;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  top: 15px;
+  right: 20px;
+  transition: color 0.2s ease;
+}
+
+
+/* 👇 Evita el borde azul o gris al hacer clic */
+.btn-cerrar:focus {
+  outline: none;
+  box-shadow: none;
+  border: none;
+  color: white;
+}
+
+.inputForm svg {
+  width: 20px;
+  height: 20px;
+  fill: #000000;
+  margin-right: 0;
+  flex-shrink: 0;
+}
+
+@keyframes aparecer {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}

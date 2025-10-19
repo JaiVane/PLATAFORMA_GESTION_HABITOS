@@ -12,7 +12,11 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+html.body-bloqueado,
+body.body-bloqueado {
+  overflow: hidden !important;
+  height: 100vh;
+}
 a {
   font-weight: 500;
   color: #646cff;
