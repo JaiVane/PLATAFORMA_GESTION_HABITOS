@@ -4,9 +4,21 @@ import IconPassword from "../Componentes/Iconos/IconoPassword";
 import IconGoogle from "../Componentes/Iconos/IconoGoogle";
 import IconFacebook from "../Componentes/Iconos/IconoFacebook";
 import '../Estilos/Login.css';
+import { useNavigate } from "react-router-dom";
 
 
 export default function Login({ onCerrar, onIrARegistro }) {
+    
+    const navigate = useNavigate();
+
+    const handleLogin = () => {
+        // Lógica de autenticación aquí
+        // Si la autenticación es exitosa, redirigir a la página principal
+        navigate('/dashboard');
+
+    }
+
+
     return (
       <div className="modal-fondo">
         <div className="modal-base login-modal">
@@ -39,7 +51,7 @@ export default function Login({ onCerrar, onIrARegistro }) {
             <span className="span">¿Olvidaste tu contraseña?</span>
           </div>
   
-          <button className="button-submit">Iniciar Sesión</button>
+          <button className="button-submit" onClick={handleLogin}>Iniciar Sesión</button>
   
           <p className="p line">O con</p>
   
