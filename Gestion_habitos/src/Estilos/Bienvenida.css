@@ -1,182 +1,199 @@
-html, body{
-    overflow-x: hidden; /* Evita el scroll horizontal */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
 }
+
 .body-bloqueado {
-    overflow: hidden;
-  }
-  
-/* --- Estilo base para el contenedor principal --- */
+  overflow: hidden;
+}
+
+/* --- Contenedor Principal --- */
 .bienvenida-container {
-    position: relative;
-    width: 100vw;      /* Ocupa todo el ancho de la pantalla */
-    min-height: 100vh;     /* Ocupa toda la altura de la pantalla */
-    overflow: hidden;  /* Oculta cualquier contenido que se salga */
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    background-color: transparent; /* Fondo de respaldo si el video no carga */
+  position: relative;
+  width: 100vw;
+  min-height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: transparent;
 }
 
-/* --- Sección Fondo (video + título centrado) --- */
+/* --- Fondo (video + texto) --- */
 .Fondo {
-    position: relative;
-    width: 100%;
-    height: 90vh; /* ocupa toda la pantalla */
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: transparent;
+  position: relative;
+  width: 100%;
+  height: 90vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #000;
 }
 
-  /* --- Video de fondo --- */
 .video-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1; /* para que quede detrás del texto */
-    overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  overflow: hidden;
 }
 
 .background-video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* el video cubre toda el área sin deformarse */
-    filter: brightness(0.6); /* oscurece un poco para resaltar el texto */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.25;
+  filter: brightness(0.6);
 }
 
-  /* --- Texto central --- */
+.Fondo::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 0;
+}
+
+/* --- Texto central --- */
 .titulo {
-    text-align: center;
-    color: #fff;
-    z-index: 2;
-    max-width: 800px;
-    padding:  20px;
-    
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: #fff;
+  padding: 20px;
+  max-width: 90%;
 }
 
 .titulo h1 {
-    background-color: rgba(255, 255, 255, 0.523);
-    font-size: 70px;
-    color: #00BFFF;
-    font-family: 'Lobster', cursive;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    -webkit-text-stroke: 2px #ffffff;
-    text-shadow: 3px 3px 8px rgba(255, 255, 255, 0.6);
-    border: 3px solid #fff;
-    padding: 10px 25px;
-    display: inline-block;
-    border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.523);
+  font-size: 70px;
+  color: #00BFFF;
+  font-family: 'Lobster', cursive;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  -webkit-text-stroke: 2px #ffffff;
+  text-shadow: 3px 3px 8px rgba(255, 255, 255, 0.6);
+  border: 3px solid #fff;
+  padding: 10px 25px;
+  display: inline-block;
+  border-radius: 10px;
 }
 
 .titulo p {
-    font-size: 25px;
-    line-height: 1.5;
-    color: #ffffff;
-    font-family: 'Great Vibes', cursive;
-    background: transparent;
+  font-size: 25px;
+  line-height: 1.5;
+  color: #fafbfc;
+  font-family: 'Great Vibes', cursive;
+  -webkit-text-stroke: 1px #000000;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
 }
 
 /* --- Header / Navbar --- */
-header {
-    display: flex;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background-color: transparent;
-    color: #FFFFFF;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 80px 0px 0px;
-    z-index: 10;
-    box-sizing: border-box; /* semitransparente sobre el video */
-    backdrop-filter: blur(15px); /* efecto de difuminado */
+.header {
+  display: flex;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: transparent;
+  color: #FFFFFF;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 80px 0px 0px;
+  z-index: 10;
+  box-sizing: border-box;
+  backdrop-filter: blur(15px);
 }
 
-  /* --- Logo o título del sitio --- */
 .header h2 {
-    font-family: 'lobster',  cursive;
-    font-size: 24px;
-    margin : 10px 0;
-    margin-left: 50px;
-    color: #00BFFF;
-    
-
+  font-family: 'Lobster', cursive;
+  font-size: 24px;
+  margin: 10px 0;
+  margin-left: 50px;
+  color: #00BFFF;
 }
 
-  /* --- Navegación --- */
-
+/* --- Navegación --- */
 nav.Botones {
-    display: flex;
-    gap: 15px;
+  display: flex;
+  gap: 15px;
 }
-nav.Botones button{
-    background: transparent;
-    border: none;
-    color: #00BFFF;
-    padding: 8px 16px;
-    cursor: pointer;
-    font-weight: bold;
-    font-size: 16px;
-    position: relative; 
-    text-decoration: none;
-    transition: color 0.3s ease;
+
+nav.Botones button {
+  background: transparent;
+  border: none;
+  color: #00BFFF;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 16px;
+  position: relative;
+  text-decoration: none;
+  transition: color 0.3s ease;
 }
-/* Línea que se expande desde el centro */
+
 nav.Botones button::after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    bottom: 0;
-    width: 0;
-    height: 2px;
-    background-color: #ffffff;
-    transition: width 0.3s ease, left 0.3s ease;
-    transform: translateX(-50%);
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background-color: #ffffff;
+  transition: width 0.3s ease, left 0.3s ease;
+  transform: translateX(-50%);
 }
-/* Hover: la línea se expande hacia los lados */
+
 nav.Botones button:hover::after {
-    width: 100%;
-    left: 50%;
-    transform: translateX(-50%);
+  width: 100%;
+  left: 50%;
+  transform: translateX(-50%);
 }
+
 nav.Botones button:hover {
-    color: #FFFFFF;
+  color: #FFFFFF;
 }
 
+/* --- Sección Info --- */
 .info-section {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-    padding: 60px 20px;
-    background-color: #F5F5F5;
-    color: #080808;
-    width: 100%;
-    box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 60px 20px;
+  background-color: #F5F5F5;
+  color: #080808;
+  width: 100%;
+  box-sizing: border-box;
 }
+
 .info-card {
-    background-color: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    padding: 20px;
-    max-width: 300px;
-    text-align: center;
-    flex: 1;
-    min-width: 250px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 20px;
+  max-width: 300px;
+  text-align: center;
+  flex: 1;
+  min-width: 250px;
 }
+
 .info-card h2 {
-    color: #00BFFF;
-    margin-bottom: 10px;
-    font-size: 1.5rem;
+  color: #00BFFF;
+  margin-bottom: 10px;
+  font-size: 1.5rem;
 }
+
 .info-card p {
-font-size: 16px;
-color: #1E2A38;
-line-height: 1.4;
+  font-size: 16px;
+  color: #1E2A38;
+  line-height: 1.4;
 }
-
-
