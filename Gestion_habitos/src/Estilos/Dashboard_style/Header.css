@@ -1,0 +1,17 @@
+.dashboard-header {
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    padding: 20px 30px;
+    background-color: red;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  }
+  
+  .nivel-info {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    font-weight: 500;
+    color: #2d79f3;
+  }
+  

@@ -1,0 +1,58 @@
+.panel-principal {
+    padding: 30px;
+    background-color: #f0f4f8;
+    flex-grow: 1;
+    overflow-y: auto;
+  }
+  
+  .bloque-saludo {
+    margin-bottom: 30px;
+  }
+  
+  .bloque-saludo h2 {
+    font-size: 24px;
+    color: #2d79f3;
+  }
+  
+  .nivel-xp {
+    display: flex;
+    gap: 20px;
+    font-weight: 500;
+    margin-top: 10px;
+  }
+  
+  .bloque-habitos,
+  .bloque-progreso,
+  .bloque-mensaje,
+  .bloque-historial,
+  .bloque-widgets {
+    margin-bottom: 30px;
+  }
+  
+  .contenedor-habitos,
+  .contenedor-progreso,
+  .contenedor-historial,
+  .contenedor-widgets {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    min-height: 100px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  }
+  
+  .contenedor-widgets {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .widget {
+    flex: 1;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: 500;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  

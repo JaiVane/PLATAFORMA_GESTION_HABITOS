@@ -38,7 +38,15 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Bienvenida from './Paginas/Bienvenida';
 import Login  from './Paginas/Login';
 import Registro from './Paginas/Registro';
-import Footer from './Componentes/Footer';
+import Dashboard from './Paginas/Dashboard';
+import Habitos from './Paginas/Habitos';
+import Retos from './Paginas/Retos';
+import Estadisticas from './Paginas/Estadisticas';
+import Misiones from './Paginas/Misiones';
+import Recompensas from './Paginas/Recompensas';
+import Reportes from './Paginas/Reportes';
+import Notificaciones from './Paginas/Notificaciones';
+
 
 function App() {
   return (
@@ -47,6 +55,15 @@ function App() {
         <Route path="/" element={<Bienvenida />} />
         <Route path="/login" element={<Login />} />
         <Route path="/registro" element={<Registro />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/habitos" element={<Habitos />} />
+        <Route path="/retos" element={<Retos />} />
+        <Route path="/estadisticas" element={<Estadisticas />} />
+        <Route path="/misiones" element={<Misiones />} />
+        <Route path="/recompensas" element={<Recompensas />} />
+        <Route path="/perfil" element={<Perfil />} />
+        <Route path="/reportes" element={<Reportes />} />
+        <Route path="/notificaciones" element={<Notificaciones />} />
       </Routes>
     </Router>
   );
