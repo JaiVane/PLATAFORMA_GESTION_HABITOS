@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import HabitTracker from "./HabitTracker";
-import "./AgregarHabitos.css";
+import React, { useState } from 'react';
+import HabitTracker from './HabitTracker';
+import '../../Estilos/Habitos_style/AgregarHabitos.css';
 
 const AgregarHabitos = () => {
   const [habito, setHabito] = useState({

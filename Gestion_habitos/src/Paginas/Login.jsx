@@ -11,7 +11,8 @@ export default function Login({ onCerrar, onIrARegistro }) {
     
     const navigate = useNavigate();
 
-    const handleLogin = () => {
+    const handleLogin = (e) => {
+        e.preventDefault(); 
         // Lógica de autenticación aquí
         // Si la autenticación es exitosa, redirigir a la página principal
         navigate('/dashboard');
@@ -21,12 +22,12 @@ export default function Login({ onCerrar, onIrARegistro }) {
 
     return (
       <div className="modal-fondo">
-        <div className="modal-base login-modal">
+        <div className="modal-base">
           <div className="login-header">
             <h2>HabiQuest</h2>
             <button className="btn-cerrar" onClick={onCerrar}>✕</button>
           </div>
-          <form className="form ">
+          <form className="form login-modal">
           <div className="flex-column">
             <label>Email o Usuario</label>
             <div className="inputForm">

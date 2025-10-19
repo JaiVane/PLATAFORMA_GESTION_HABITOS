@@ -1,16 +1,5 @@
 
   
-  .form {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    background-color: #ffffff;
-    padding: 30px;
-    width: 400px;
-    border-radius: 0 0 20px 20px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-  }
-  
   .flex-column > label {
     color: #151717;
     font-weight: 600;
@@ -198,9 +187,9 @@
   z-index: 999;
 }
 .modal-base {
-  width: 400px;
-  max-height: 90vh;
-  background-color: white;
+  width: 300px;
+  max-height: 100vh;
+  background-color: yellow;
   border-radius: 20px;
   box-shadow: 0 4px 20px rgba(0,0,0,0.3);
   animation: aparecer 0.3s ease-in-out;
@@ -209,10 +198,16 @@
   overflow: hidden;
 }
 
-/* Contenedor del formulario modal */
-.login-modal {
-all: unset;
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background-color: transparent;
+  padding: 30px;
+  border-radius: 0 0 20px 20px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 }
+
 
 /* Header del modal */
 .login-header {

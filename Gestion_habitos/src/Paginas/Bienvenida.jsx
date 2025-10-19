@@ -26,14 +26,13 @@ export default function Bienvenida() {
         <h2>HabiQuest</h2>
         <nav className="Botones">
           <button onClick={() => setMostrarLogin(true)}>Iniciar Sesión</button>
-          <button onClick={() => setMostrarRegistro(true)}>Registrarse</button>
         </nav>
       </header>
 
       <section className="Fondo">
         <div className="video-background">
           <video autoPlay loop muted playsInline className="background-video">
-            <source src="/assets/213027_small.mp4" type="video/mp4" />
+            <source src="/video/futuro.mp4" type="video/mp4" />
           </video>
         </div>
 

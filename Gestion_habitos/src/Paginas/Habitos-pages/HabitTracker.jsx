@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./HabitTracker.css";
+import '../../Estilos/Habitos_style/HabitTracker.css';
 
 export default function HabitTracker({ habitos, onMarkDone }) {
   const [tab, setTab] = useState("Diaria");
