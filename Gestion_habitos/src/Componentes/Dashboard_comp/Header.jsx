@@ -55,7 +55,7 @@ export default function Header() {
         <FontAwesomeIcon icon={faCog} />
         <span>Configuración</span>
       </button>
-      <button>
+      <button onClick={ ()=> navigate('/')}>
         <FontAwesomeIcon icon={faSignOutAlt} />
         <span>Cerrar sesión</span>
       </button>
