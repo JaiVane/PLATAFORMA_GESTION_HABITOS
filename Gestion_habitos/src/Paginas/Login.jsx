@@ -15,7 +15,13 @@ export default function Login({ onCerrar, onIrARegistro }) {
         e.preventDefault(); 
         // Lógica de autenticación aquí
         // Si la autenticación es exitosa, redirigir a la página principal
-        navigate('/dashboard');
+        const usuarioValido =true; // Reemplazar con la lógica real de validación
+        if(usuarioValido){
+          navigate('/dashboard/paginaPrincipal');
+        }else{
+          alert('Usuario o Contraseña Incorrectos')
+        }
+        
 
     }
 

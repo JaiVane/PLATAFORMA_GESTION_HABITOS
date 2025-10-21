@@ -1,19 +1,21 @@
 /* ====== CONTENEDOR PRINCIPAL ====== */
 .contenedor-habitos {
-  max-width: 1200px;  
-  margin-left: 250px;  
+  width: 100%;
+  height: 100%;
   padding: 20px;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
+
 
 /* ====== FORMULARIO ====== */
 .formulario-habito {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  background-color: #fff;
+  background-color: #f5f6fa;
   padding: 20px;
+  border: 2px solid #369ef3;
   border-radius: 15px;
   box-shadow: 0px 4px 15px rgba(0,0,0,0.1);
   margin-bottom: 30px;
@@ -22,36 +24,36 @@
 
 .formulario-habito h2 {
   width: 100%;
-  margin-bottom: 15px;
-  text-align: center;
-  color: #333;
+  margin-bottom: 20px;
+  color: #369ef3;
 }
 
 .formulario-habito input,
 .formulario-habito select {
   flex: 1;
-  min-width: 150px;
-  padding: 10px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  font-size: 14px;
+  min-width: 180px;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #4e4d4d;
+  background-color: white;
+  font-size: 15px;
+  color: black;
 }
 
 .formulario-habito button {
-  flex: 1 1 100%;
-  background-color: #4caf50; 
+  padding-right: 10px;
+  background-color: #2d79f3; 
   color: white;
   padding: 12px;
   border: none;
   border-radius: 8px;
   font-size: 16px;
   cursor: pointer;
-  margin-top: 10px;
-  transition: 0.3s;
+  transition: background-color 0.3s ease;
 }
 
 .formulario-habito button:hover {
-  background-color: #43a047;
+  background-color: #083b7d;
 }
 
 /* ====== BUSCADOR Y FILTROS ====== */
@@ -64,12 +66,13 @@
   gap: 15px;
   align-items: center;
   margin-bottom: 20px;
+  border: 1px solid #369ef3;
 }
 
 .buscador-filtros h2 {
   width: 100%;
   margin-bottom: 10px;
-  color: #333;
+  color: #369ef3;
 }
 
 .buscador-filtros input,
@@ -78,6 +81,8 @@
   border-radius: 8px;
   border: 1px solid #ccc;
   font-size: 14px;
+  background-color: white;
+  color: black;
 }
 
 /* ====== RESULTADOS EN CAJITAS ====== */
@@ -90,46 +95,29 @@
 }
 
 .caja-habito {
-  flex: 0 0 250px;     /* ancho fijo */
-  height: 180px;       /* alto fijo */
-  background-color: #fff; /* se sobrescribe inline con colorFondo */
-  border-radius: 12px;
-  border: 2px solid;   /* borde inline según colorFondo */
-  padding: 15px;
-  box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between; /* mantiene los botones abajo */
-  transition: 0.3s;
-  box-sizing: border-box;
+  background-color: #fff;
+  border: 2px solid #ccc;
+  border-radius: 14px;
+  padding: 18px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
 }
 
 .caja-habito:hover {
-  transform: translateY(-5px);
-}
-
-.info-habito {
-  text-align: center;
-  width: 100%;
-  flex-grow: 1; /* ocupa el espacio disponible */
-  display: flex;
-  flex-direction: column;
-  justify-content: center; /* centra verticalmente el texto */
+  transform: scale(1.03);
 }
 
 .info-habito h4 {
-  text-align: center;
-  margin-bottom: 10px;
   font-size: 18px;
-  color: #000; /* letra negra */
+  color: #3e2723;
+  margin-bottom: 8px;
 }
 
 .info-habito p {
-  margin: 3px 0;
-  text-align: left; 
   font-size: 14px;
-  color: #000; /* letra negra */
+  color: #4e342e;
 }
+
 
 /* ====== BOTONES EDITAR Y ELIMINAR ====== */
 .botones {
@@ -143,11 +131,14 @@
   background-color: #2196f3; 
   color: white;
   border: none;
-  padding: 6px 12px;
+  padding: 8px 14px;
   border-radius: 8px;
-  cursor: pointer;
   font-size: 14px;
   transition: 0.3s;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
 .btn-editar:hover {
@@ -157,11 +148,14 @@
 .btn-eliminar {
   background-color: #f44336; 
   color: white;
+  font-weight: 500;
   border: none;
-  padding: 6px 12px;
+  padding: 8px 14px;
   border-radius: 8px;
-  cursor: pointer;
   font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
   transition: 0.3s;
 }
 

@@ -1,20 +1,31 @@
-//import '../../Estilos/Dashboard_style/Sidebar.css';
-import { NavLink } from 'react-router-dom';
+import '../../Estilos/Dashboard_style/Sidebar.css';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faHouse,
+  faClipboardList,
+  faBullseye,
+  faChartLine,
+  faPuzzlePiece,
+  faMedal,
+  faChartBar,
+} from '@fortawesome/free-solid-svg-icons';
+import imgLogo from '../../assets/logoall.png';
 
 
 export default function Sidebar() {
     const [expandido, setExpandido] = useState(true);
 
     const menuItems = [
-        { label: 'Inicio', icon: '🏠', path: '/' },
-        { label: 'Hábitos', icon: '📋', path: '/habitos' },
-        { label: 'Retos', icon: '🎯', path: '/retos' },
-        { label: 'Estadísticas', icon: '📈', path: '/estadisticas' },
-        { label: 'Misiones', icon: '🧩', path: '/misiones' },
-        { label: 'Recompensas', icon: '🏅', path: '/recompensas' },
-        { label: 'Reportes', icon: '📊', path: '/reportes' },
-        { label: 'Notificaciones', icon: '🔔', path: '/notificaciones' },
+        { label: 'Inicio', icon: faHouse, path: '/dashboard/paginaPrincipal' },
+        { label: 'Hábitos', icon: faClipboardList, path: '/dashboard/habitos' },
+        { label: 'Retos', icon: faBullseye, path: '/dashboard/retos' },
+        { label: 'Estadísticas', icon: faChartLine, path: '/dashboard/estadisticas' },
+        { label: 'Misiones', icon: faPuzzlePiece, path: '/dashboard/misiones' },
+        { label: 'Recompensas', icon: faMedal, path: '/dashboard/recompensas' },
+        { label: 'Reportes', icon: faChartBar, path: '/dashboard/reportes' },
+        
     ];
     return (
         <aside className={`sidebar ${expandido ? 'expandido' : 'colapsado'}`}
@@ -22,8 +33,8 @@ export default function Sidebar() {
         onMouseLeave={() => setExpandido(false)}>
 
         <div className="sidebar-logo">
-            {/*<img src="/assets/logo.svg" alt="HabiQuest" className="logo-icon" />*/}
-            {expandido && <span className="logo-text">HabiQuest</span>}
+            <img  src= {imgLogo} alt="logoHabiQuest"  className='logo-img'/>
+            {expandido && <span className={`logo-text ${expandido ? 'visible' : 'oculto'}`}>HabiQuest</span>}
         </div>
 
         <ul className="menu">
@@ -34,7 +45,7 @@ export default function Sidebar() {
                         className={({ isActive }) =>
                         `menu-item ${isActive ? 'activo' : ''}`
                         }>
-                        <span className="icon">{item.icon}</span>
+                        <span className="icon"><FontAwesomeIcon icon={item.icon}/></span>
                         {expandido && <span className="label">{item.label}</span>}
                     </NavLink>
                 </li>

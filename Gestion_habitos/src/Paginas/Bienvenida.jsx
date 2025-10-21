@@ -6,7 +6,7 @@ import '../Estilos/Bienvenida.css';
 import Footer from '../Componentes/Footer';
 
 export default function Bienvenida() {
-  const navigate = useNavigate();
+
   const [mostrarLogin, setMostrarLogin] = useState(false);
   const [mostrarRegistro, setMostrarRegistro] = useState(false);
 

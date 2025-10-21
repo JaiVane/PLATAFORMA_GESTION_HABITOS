@@ -202,7 +202,7 @@ const AgregarHabitos = () => {
       <div className="buscador-filtros">
          <h2> Mis Hábitos</h2>
         
-        <input
+        <input 
           type="text"
           placeholder="Buscar hábito..."
           value={busqueda}

@@ -1,12 +1,13 @@
 /* Sidebar Styles */
 .sidebar {
-    background-color: #2d79f3;
-    color: white;
+    background-color: white ;
+    color: #2d79f3;
     height: 100vh;
     padding: 20px 10px;
     transition: width 0.3s ease;
     overflow: hidden;
     box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    border-right: 3px solid rgba(168, 168, 168, 0.374); 
 }
 .sidebar.expandido {
     width: 220px;
@@ -14,22 +15,45 @@
 .sidebar.colapsado {
     width: 70px;
 }
+.sidebar.colapsado .menu-item{
+    justify-content: center;
+    padding: 12px 0;
+}
+.sidebar.colapsado .icon {
+    font-size: 20px;
+    width: auto;
+    margin: 0 auto;
+}
 /* Logo Styles */
 .sidebar-logo {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 10px;
     margin-bottom: 30px;
 }
-.logo-icon {
-    width: 32px;
-    height: 32px;
+.logo-img {
+    width: 80px;
+    height: auto;
+    transition: transform 0.3s ease;
+    border-radius: 50%;
 }
 .logo-text {
     font-size: 20px;
     font-weight: bold;
     font-family: 'Lobster', cursive;
+    margin-top: 8px;
+    text-align: center;
+    transition: opacity 0.3s ease;
 }
+.logo-text.visible {
+    opacity: 1;
+  }
+  
+  .logo-text.oculto {
+    opacity: 0;
+    pointer-events: none;
+  }
+  
 /* Menu Styles */
 .menu {
     list-style: none;
@@ -44,21 +68,37 @@
     gap: 12px;
     padding: 10px;
     border-radius: 8px;
-    color: white;
+    color: rgb(0, 0, 0);
     text-decoration: none;
-    transition: background 0.2s ease;
+    transition: all 0.3s ease;
 }
 .menu-item:hover {
     background-color: rgba(255, 255, 255, 0.2);
 }
 .menu-item.activo {
-    background-color: #1b4db1;
+    background-color: transparent;
+    border-right: 6px solid #1b4db1;
+    padding-right: 6px;
+    transform: translateX(4px); /* pequeño desplazamiento hacia la derecha */
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.3); /* brillo sutil */
+    animation: slideIn 0.3s ease forwards;
 }
+@keyframes slideIn {
+    from {
+      transform: translateX(-6px);
+      opacity: 0.6;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
 .icon {
     font-size: 18px;
+    width: 24px;
     display: flex;
     justify-content: center;
-    width: 24px;
+    align-items: center;
 }
 
 .label {

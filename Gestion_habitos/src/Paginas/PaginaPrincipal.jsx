@@ -1,4 +1,4 @@
-import '../../Estilos/Dashboard_style/PaginaPrincipal.css';
+import '../Estilos/PaginaPrincipal.css';
 
 export default function PaginaPrincipal() {
   return (
