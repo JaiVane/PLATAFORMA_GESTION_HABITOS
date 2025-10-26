@@ -18,6 +18,8 @@
   }
   
   .subinfo {
+    display: flex; 
+    flex-direction: column;
     margin-top: 4px;
     font-size: 12px;
     opacity: 0.9;

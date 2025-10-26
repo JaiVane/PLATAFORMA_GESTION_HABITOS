@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import '../Estilos/PerfilUsuario.css';
 
-export default function PerfilUsuario() {
+
+export default function PerfilUsuario({cerrarModal}) {
   const [perfil, setPerfil] = useState({
     nombre: 'Vallery Miranda',
     biografia: '',
@@ -10,6 +11,16 @@ export default function PerfilUsuario() {
     imagen: '',
     rol: '',
   });
+  // 🔥 EFECTO CLAVE: Ocultar header cuando el modal se abre
+  useEffect(() => {
+    // Agregar clase al body para ocultar header
+    document.body.classList.add('modal-perfil-open');
+    
+    // Limpiar: remover clase cuando el componente se desmonte
+    return () => {
+      document.body.classList.remove('modal-perfil-open');
+    };
+  }, []);
 
   const manejarCambio = (e) => {
     const { name, value } = e.target;
@@ -21,19 +32,23 @@ export default function PerfilUsuario() {
     const url = URL.createObjectURL(archivo);
     setPerfil({ ...perfil, imagen: url });
   };
-
+  const guardarCambios = () => {
+    console.log('Datos guardados:', perfil);
+    cerrarModal();
+  };
   return (
     <div className="perfil-container">
-      <h2>Editar Perfil</h2>
-      <hr />
-      
-
-      <div className="perfil-foto">
+        <div className="editar">
+          <h2>Editar Perfil</h2>
+          <button onClick={cerrarModal}>X</button>
+        </div>
+      <div className="perfil-base">
+        <div className="perfil-foto">
         <img src={perfil.imagen || '/default-avatar.png'} alt="Foto de perfil" />
         <input type="file" accept="image/*" onChange={manejarImagen} />
-      </div>
+        </div>
 
-      <div className="perfil-formulario">
+        <div className="perfil-formulario">
         <label>Nombre
           <input name="nombre" value={perfil.nombre} onChange={manejarCambio} />
         </label>
@@ -64,8 +79,12 @@ export default function PerfilUsuario() {
           </select>
         </label>
 
-        <button className="btn-guardar">Guardar cambios</button>
+        <button className="btn-guardar"  onClick={guardarCambios}>
+          Guardar cambios
+        </button>
+        </div>
       </div>
+      
     </div>
   );
 }

@@ -5,25 +5,40 @@ import IconGoogle from "../Componentes/Iconos/IconoGoogle";
 import IconFacebook from "../Componentes/Iconos/IconoFacebook";
 import '../Estilos/Login.css';
 import { useNavigate } from "react-router-dom";
+import { postData } from "../Services/api";
 
-
+import	{ useState } from "react";
 export default function Login({ onCerrar, onIrARegistro }) {
     
     const navigate = useNavigate();
 
-    const handleLogin = (e) => {
-        e.preventDefault(); 
-        // Lógica de autenticación aquí
-        // Si la autenticación es exitosa, redirigir a la página principal
-        const usuarioValido =true; // Reemplazar con la lógica real de validación
-        if(usuarioValido){
-          navigate('/dashboard/paginaPrincipal');
-        }else{
-          alert('Usuario o Contraseña Incorrectos')
+    const[email,setEmail]= useState('');
+    const[password,setPassword]= useState('');
+    const handleLogin = async (e) => {
+      e.preventDefault();
+    
+      try {
+        // Traemos la lista de usuarios desde el backend
+        const usuarios = await fetch("https://localhost:7140/api/Usuario");
+        const data = await usuarios.json();
+    
+        // Buscamos si existe un usuario con ese email y password
+        const usuarioEncontrado = data.find(
+          (u) => u.email === email && u.password === password
+        );
+    
+        if (usuarioEncontrado) {
+          alert("Inicio de sesión exitoso ");
+          navigate("/dashboard/paginaPrincipal");
+        } else {
+          alert("Usuario o contraseña incorrectos ");
         }
-        
-
-    }
+    
+      } catch (error) {
+        console.error("Error al conectar con la API:", error);
+        alert("No se pudo conectar con el servidor ");
+      }
+    };
 
 
     return (
@@ -38,7 +53,12 @@ export default function Login({ onCerrar, onIrARegistro }) {
             <label>Email o Usuario</label>
             <div className="inputForm">
             <IconoUser/>
-              <input placeholder="Ingresar Usuario" className="input" type="text" />
+              <input 
+              placeholder="Ingresar Usuario" 
+              className="input" 
+              type="text"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)} />
             </div>
           </div>
   
@@ -46,7 +66,12 @@ export default function Login({ onCerrar, onIrARegistro }) {
             <label>Contraseña</label>
             <div className="inputForm">
               <IconPassword/>
-              <input placeholder="Ingresar Contraseña" className="input" type="password" />
+              <input 
+              placeholder="Ingresar Contraseña" 
+              className="input" 
+              type="password" 
+              value ={password}
+              onChange={(e) => setPassword(e.target.value)}/>
             </div>
           </div>
   

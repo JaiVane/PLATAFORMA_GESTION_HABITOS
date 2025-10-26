@@ -1,5 +1,5 @@
 
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 import Bienvenida from './Paginas/Bienvenida';
 import Login  from './Paginas/Login';
 import Registro from './Paginas/Registro';

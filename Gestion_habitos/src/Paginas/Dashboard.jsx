@@ -48,13 +48,13 @@ export default  function Dashboard() {
                     <Route path="/perfil" element={<PerfilUsuario />} />
                 </Routes>
                 {mostrarModalPerfil && (
-                    <div className="modal overlay">
-                        <div className="modal-contenido">
-                            <button className="modal-cerrar" onClick={() => setMostrarModalPerfil(false)}>X</button>
-                            <PerfilUsuario />
-                        </div>
+                    <div className="modal-fondo">
+                        <div className="modal-base">
+                        <PerfilUsuario cerrarModal={() => setMostrarModalPerfil(false)} />
+                    </div>
                     </div>
                 )}
+
                 
             </div>
         </div>

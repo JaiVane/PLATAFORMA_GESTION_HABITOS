@@ -3,9 +3,36 @@ import '../../Estilos/Dashboard_style/Header.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; 
 import imgUser from '../../assets/logoPrincipalInvert.png';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 export default function Header() {
+
+  const [frase, setFrase] = useState("");
+  useEffect(() => {
+    const frasesMotivadoras = [ "Hoy es un buen día para avanzar.",
+      "Tu constancia es tu superpoder.",
+      "Cada hábito te acerca a tu meta.",
+      "No tienes que ser perfecto, solo constante.",
+      "Hazlo por ti, no por los demás.",
+      "El progreso es mejor que la perfección.",
+      "Un paso a la vez, pero sin detenerte.",
+      "Tu esfuerzo vale más que mil excusas.",
+      "La disciplina construye tu destino.",
+      "Hoy puedes más de lo que crees.",
+      "El cambio empieza con una acción.",
+      "No esperes motivación, crea rutina.",
+      "Tu versión futura te lo agradecerá.",
+      "Hazlo aunque no tengas ganas.",
+      "El hábito vence al talento sin constancia.",
+      "Cada día cuenta, incluso este.",
+      "No pares ahora, estás más cerca.",
+      "Tu misión empieza hoy.",
+      "Sé el héroe de tu propia historia.",
+      "La recompensa está en el camino."];
+      const aleatoria = frasesMotivadoras[Math.floor(Math.random() * frasesMotivadoras.length)];
+      setFrase(aleatoria);
+    }, []);
+
 
   const nombreUsuario ="Vallery Miranda";
   const fechaActual = new Date();
@@ -26,12 +53,11 @@ export default function Header() {
   return (
       <nav className="dashboard-header">
         
-
-
         <div className='header-left'>
-          <h3>Bienvenido, {nombreUsuario}</h3>
+          <h3>Bienvenido a HabiQuest, {nombreUsuario}</h3>
           <div className='subinfo'>
-            <small className="frase-habito">{fechaFormateada} {"==>"}Un pequeño habito diario genera grandes logros.</small>
+            <small >{fechaFormateada} </small>
+              <small>{frase}</small>
           </div>
         </div>
         <div className="nivel-info">
@@ -55,7 +81,7 @@ export default function Header() {
         <FontAwesomeIcon icon={faCog} />
         <span>Configuración</span>
       </button>
-      <button>
+      <button onClick={ ()=> navigate('/')}>
         <FontAwesomeIcon icon={faSignOutAlt} />
         <span>Cerrar sesión</span>
       </button>

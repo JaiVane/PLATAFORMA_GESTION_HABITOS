@@ -1,63 +1,194 @@
+/* ===== ESTILOS PARA OCULTAR HEADER CUANDO MODAL ESTÉ ABIERTO ===== */
+body.modal-perfil-open .dashboard-header {
+  display: none !important;
+}
+
+/* OVERLAY OSCURO DETRÁS DEL MODAL */
+body.modal-perfil-open::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  z-index: 9998;
+  pointer-events: none;
+
+}
+
+/* CONTENEDOR PRINCIPAL DEL MODAL */
 .perfil-container {
-    max-width: 600px;
-    margin: auto;
-    background-color: #f4f1ec;
-    padding: 30px;
-    border-radius: 16px;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
-    font-family: "Poppins", sans-serif;
-  }
+  max-width: 500px;
+  width: 90%;
+  background-color: white;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  font-family: "Poppins", sans-serif;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+ 
+}
+.editar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #2d79f3;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 15px 15px 0 0;
+}
+
+.editar h2 {
+  font-size: 30px;
+  color: white;
+  margin: 0;
+  font-weight: 600;
+}
+
+.editar button {
+  background-color: transparent;
+  border: none;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+
+/* CONTENEDOR BASE */
+.perfil-base {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  max-height: 60vh;
+  overflow-y: auto;
+  scrollbar-width: thin;              /* Firefox */
+  scrollbar-color: #2d79f3 #e0e0e0; 
+  padding-right: 10px; /* espacio para el scroll */
+}
+.perfil-base::-webkit-scrollbar {
+  width: 8px;
+}
+
+.perfil-base::-webkit-scrollbar-track {
+  background: #e0e0e0;
+  border-radius: 8px;
+}
+
+.perfil-base::-webkit-scrollbar-thumb {
+  background-color: #2d79f3;
+  border-radius: 8px;
+
   
-  .perfil-container h2 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #5d4037;
-  }
+  border: 2px solid #e0e0e0;
+}
+
+.perfil-base::-webkit-scrollbar-thumb:hover {
+  background-color: #1b5edb;
+}
+
+/* SECCIÓN FOTO */
+.perfil-foto {
+  text-align: center;
+  margin-bottom: 10px;
+  justify-content: center;
+  align-items: center ;
+}
+
+.perfil-foto img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #2d79f3;
+  margin-bottom: 10px;
+}
+
+.perfil-foto input[type="file"] {
+  width: 100%;
+  max-width: 200px;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 12px;
+  background: #f9f9f9;
+}
+
+/* FORMULARIO */
+.perfil-formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
   
-  .perfil-foto {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .perfil-foto img {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 3px solid #ccc;
-  }
-  
-  .perfil-formulario label {
-    display: block;
-    margin-bottom: 12px;
-    font-weight: 600;
-    color: #333;
-  }
-  
-  .perfil-formulario input,
-  .perfil-formulario select,
-  .perfil-formulario textarea {
-    width: 100%;
-    padding: 10px;
-    border-radius: 8px;
-    border: 1px solid #bbb;
-    margin-top: 6px;
-    font-size: 14px;
-  }
-  
-  .btn-guardar {
-    background-color: #8bc34a;
-    color: white;
-    padding: 12px;
-    border: none;
-    border-radius: 10px;
-    font-size: 16px;
-    cursor: pointer;
-    margin-top: 20px;
-    width: 100%;
-  }
-  
-  .btn-guardar:hover {
-    background-color: #689f38;
-  }
-  
+}
+
+.perfil-formulario label {
+  display: flex;
+  flex-direction: column;
+  font-weight: 600;
+  color: #333;
+  font-size: 14px;
+  margin-bottom: 5px;
+  overflow-y: auto;
+}
+
+.perfil-formulario input,
+.perfil-formulario select,
+.perfil-formulario textarea {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 2px solid #e0e0e0;
+  margin-top: 5px;
+  font-size: 14px;
+  background-color: transparent;
+  font-family: "Poppins", sans-serif;
+  box-sizing: border-box;
+  color: black;
+}
+
+.perfil-formulario input:focus,
+.perfil-formulario select:focus,
+.perfil-formulario textarea:focus {
+  outline: none;
+  border-color: #2d79f3;
+  background-color: #fff;
+}
+
+.perfil-formulario textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+
+
+/* BOTÓN */
+.btn-guardar {
+  background-color: #2d79f3;
+  color: white;
+  padding: 14px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 10px;
+  width: 100%;
+  transition: background-color 0.3s;
+}
+
+.btn-guardar:hover {
+  background-color: #1b5edb;
+}
