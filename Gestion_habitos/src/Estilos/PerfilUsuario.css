@@ -96,7 +96,7 @@ body.modal-perfil-open::before {
 }
 
 /* SECCIÓN FOTO */
-.perfil-foto {
+/*.perfil-foto {
   text-align: center;
   margin-bottom: 10px;
   justify-content: center;
@@ -123,6 +123,39 @@ body.modal-perfil-open::before {
   border-radius: 6px;
   font-size: 12px;
   background: #f9f9f9;
+}*/
+.perfil-foto {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  margin: auto;
+}
+
+.foto-wrapper {
+  display: block;
+  position: relative;
+  cursor: pointer;
+}
+
+.foto-perfil {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+}
+
+.icono-camara {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: #333;
+  color: white;
+  border-radius: 50%;
+  padding: 6px;
+  font-size: 18px;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
 }
 
 /* FORMULARIO */

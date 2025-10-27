@@ -1,17 +1,36 @@
 import { useState,useEffect } from 'react';
 import '../Estilos/PerfilUsuario.css';
+import {putData} from '../Services/api';
+import { subirImagenPerfil } from '../Services/api';
 
 
-export default function PerfilUsuario({cerrarModal}) {
+export default function PerfilUsuario({usuario, onGuardar,cerrarModal}) {
+
   const [perfil, setPerfil] = useState({
-    nombre: 'Vallery Miranda',
-    biografia: '',
-    genero: '',
-    objetivo: '',
-    imagen: '',
-    rol: '',
+    nombre: usuario?.nombre || "",
+    biografia: usuario?.biografia || "",
+    genero: usuario?.genero || "",
+    objetivo: usuario?.objetivo || "",
+    imagenPerfil: usuario?.ImagenPerfil || "/default-avatar.png",
+    rol: usuario?.rol || "",
   });
-  // 🔥 EFECTO CLAVE: Ocultar header cuando el modal se abre
+  
+  useEffect(() => {
+    if (usuario) {
+      setPerfil({
+        nombre: usuario.nombre || "",
+        biografia: usuario.biografia || "",
+        genero: usuario.genero || "",
+        objetivo: usuario.objetivo || "",
+        imagenPerfil: usuario.imagenPerfil || "/default-avatar.png",
+        rol: usuario.rol || "",
+      });
+    }
+  }, [usuario]);
+  
+
+
+  //EFECTO CLAVE: Ocultar header cuando el modal se abre
   useEffect(() => {
     // Agregar clase al body para ocultar header
     document.body.classList.add('modal-perfil-open');
@@ -27,15 +46,39 @@ export default function PerfilUsuario({cerrarModal}) {
     setPerfil({ ...perfil, [name]: value });
   };
 
-  const manejarImagen = (e) => {
+  const manejarImagen = async (e) => {
     const archivo = e.target.files[0];
-    const url = URL.createObjectURL(archivo);
-    setPerfil({ ...perfil, imagen: url });
+    if(!archivo) return;
+
+    try {
+      const data = await subirImagenPerfil(usuario.id, archivo);
+      const nuevaRuta =data.imagen;
+
+      const perfilActualizado = {...perfil,ImagenPerfil: nuevaRuta};
+      setPerfil(perfilActualizado);
+
+
+      const usuarioActualizado = {...usuario, imagenPerfil: nuevaRuta};
+      localStorage.setItem("usuario", JSON.stringify(usuarioActualizado));
+    }catch (error) {
+      alert("Error al subir la imagen de perfil");
+    }
   };
-  const guardarCambios = () => {
-    console.log('Datos guardados:', perfil);
-    cerrarModal();
+
+  const guardarCambios = async () => {
+    try {
+      const userId = usuario.id;
+      
+  
+      const data = await putData(`Usuario/usuarios/${userId}/actualizar`, perfil);
+      onGuardar(data.usuario);
+    } catch (error) {
+      console.error("Error al guardar los cambios del perfil:", error);
+      alert("No se pudo guardar el perfil");
+    }
   };
+  
+
   return (
     <div className="perfil-container">
         <div className="editar">
@@ -43,9 +86,22 @@ export default function PerfilUsuario({cerrarModal}) {
           <button onClick={cerrarModal}>X</button>
         </div>
       <div className="perfil-base">
-        <div className="perfil-foto">
-        <img src={perfil.imagen || '/default-avatar.png'} alt="Foto de perfil" />
-        <input type="file" accept="image/*" onChange={manejarImagen} />
+        <div className="perfil-foto"> 
+        <label htmlFor="imagen-upload" className="foto-wrapper">
+          <img
+            src={perfil.ImagenPerfil || "/default-avatar.png"}
+            alt="Foto de perfil"
+            className="foto-perfil"
+          />
+          <div className="icono-camara">📷</div>
+        </label>
+        <input 
+          id='imagen-upload' 
+          type="file" 
+          accept="image/*" 
+          onChange={manejarImagen} 
+          style={{ display: 'none' }}
+        />
         </div>
 
         <div className="perfil-formulario">

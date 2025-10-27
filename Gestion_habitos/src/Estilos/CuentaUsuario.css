@@ -83,3 +83,16 @@
   font-size: 15px;
   color: Black;
 }
+.spinner-rpg {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #ffd700;
+  animation: pulse 1s infinite;
+  margin-top: 50px;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.4; transform: scale(0.95); }
+  50% { opacity: 1; transform: scale(1.05); }
+  100% { opacity: 0.4; transform: scale(0.95); }
+}
