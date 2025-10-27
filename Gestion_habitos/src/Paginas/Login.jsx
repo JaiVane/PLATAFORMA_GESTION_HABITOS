@@ -14,31 +14,29 @@ export default function Login({ onCerrar, onIrARegistro }) {
 
     const[email,setEmail]= useState('');
     const[password,setPassword]= useState('');
+
+
     const handleLogin = async (e) => {
       e.preventDefault();
     
       try {
-        // Traemos la lista de usuarios desde el backend
-        const usuarios = await fetch("https://localhost:7140/api/Usuario");
-        const data = await usuarios.json();
-    
-        // Buscamos si existe un usuario con ese email y password
-        const usuarioEncontrado = data.find(
-          (u) => u.email === email && u.password === password
-        );
-    
-        if (usuarioEncontrado) {
-          alert("Inicio de sesión exitoso ");
-          navigate("/dashboard/paginaPrincipal");
-        } else {
-          alert("Usuario o contraseña incorrectos ");
-        }
-    
+        const data = await postData("auth/login", {
+          email,
+          password,
+        });
+      
+        // Guardar token y usuario en localStorage
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("usuario", JSON.stringify(data.usuario));
+      
+        alert("Inicio de sesión exitoso");
+        navigate("/dashboard/paginaPrincipal");
       } catch (error) {
         console.error("Error al conectar con la API:", error);
-        alert("No se pudo conectar con el servidor ");
+        alert("Usuario o contraseña incorrectos o error del servidor");
       }
     };
+
 
 
     return (
@@ -50,13 +48,13 @@ export default function Login({ onCerrar, onIrARegistro }) {
           </div>
           <form className="form login-modal">
           <div className="flex-column">
-            <label>Email o Usuario</label>
+            <label>Email </label>
             <div className="inputForm">
             <IconoUser/>
               <input 
-              placeholder="Ingresar Usuario" 
+              placeholder="Ingresar Correo Electrónico" 
               className="input" 
-              type="text"
+              type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)} />
             </div>
