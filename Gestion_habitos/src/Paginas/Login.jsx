@@ -5,44 +5,38 @@ import IconGoogle from "../Componentes/Iconos/IconoGoogle";
 import IconFacebook from "../Componentes/Iconos/IconoFacebook";
 import '../Estilos/Login.css';
 import { useNavigate } from "react-router-dom";
-import {postData} from "../Services/api";
-import {useRef} from "react";
+import { postData } from "../Services/api";
 
 import	{ useState } from "react";
 export default function Login({ onCerrar, onIrARegistro }) {
     
-    const emailRef = useRef(null);
-    const passwordRef = useRef(null);
-
     const navigate = useNavigate();
+
     const[email,setEmail]= useState('');
     const[password,setPassword]= useState('');
-
-    const handleLogin = async () => {
-      if (!email || !password) {
-        alert("Por favor ingresa tu correo y contraseña.");
-        return;
-      }
-      
+    const handleLogin = async (e) => {
+      e.preventDefault();
+    
       try {
-        const data = await postData("auth/login", { email, password }); 
-        console.log("Respuesta del servidor:", data);
-        if (!data.token || !data.usuario) {
-          alert("Respuesta inválida del servidor.");
-          return;
+        // Traemos la lista de usuarios desde el backend
+        const usuarios = await fetch("https://localhost:7140/api/Usuario");
+        const data = await usuarios.json();
+    
+        // Buscamos si existe un usuario con ese email y password
+        const usuarioEncontrado = data.find(
+          (u) => u.email === email && u.password === password
+        );
+    
+        if (usuarioEncontrado) {
+          alert("Inicio de sesión exitoso ");
+          navigate("/dashboard/paginaPrincipal");
+        } else {
+          alert("Usuario o contraseña incorrectos ");
         }
-        //guarda el usuario en localstorage para usarlo en el dashboard
-        localStorage.setItem("token", data.token);
-        localStorage.setItem("usuario", JSON.stringify(data.usuario));
-        console.log("Usuario logueado:", data.usuario);
-        navigate("/dashboard/paginaPrincipal");
+    
       } catch (error) {
-        // Captura el mensaje del backend si existe
-        const mensaje = error.message?.includes("Usuario o contraseña") 
-          ? "Usuario o contraseña incorrectos." 
-          : "Error al conectar con la API.";
-          alert(mensaje);
-          console.error("Error al conectar con la API:", error);
+        console.error("Error al conectar con la API:", error);
+        alert("No se pudo conectar con el servidor ");
       }
     };
 
@@ -56,23 +50,15 @@ export default function Login({ onCerrar, onIrARegistro }) {
           </div>
           <form className="form login-modal">
           <div className="flex-column">
-            <label>Email</label>
+            <label>Email o Usuario</label>
             <div className="inputForm">
             <IconoUser/>
               <input 
-              placeholder="Ingresar Correo Electrónico" 
+              placeholder="Ingresar Usuario" 
               className="input" 
-              type="email"
+              type="text"
               value={email}
-              onChange={(e) => setEmail(e.target.value)} 
-              ref={emailRef}
-              onKeyDown={(e) => {
-                if(e.key === 'Enter') {
-                  e.preventDefault();
-                  passwordRef.current.focus();
-                }
-              }}
-              />
+              onChange={(e) => setEmail(e.target.value)} />
             </div>
           </div>
   
@@ -85,15 +71,7 @@ export default function Login({ onCerrar, onIrARegistro }) {
               className="input" 
               type="password" 
               value ={password}
-              onChange={(e) => setPassword(e.target.value)}
-              ref={passwordRef}
-              onKeyDown={(e) => {
-                if(e.key === 'Enter') {
-                  e.preventDefault();
-                  handleLogin();
-                }
-              }}
-              />
+              onChange={(e) => setPassword(e.target.value)}/>
             </div>
           </div>
   

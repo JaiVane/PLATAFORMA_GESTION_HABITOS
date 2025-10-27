@@ -18,18 +18,6 @@ import { useState,useEffect } from 'react';
 
 export default  function Dashboard() {
     const [mostrarModalPerfil, setMostrarModalPerfil] = useState(false);
-    const [usuario, setUsuario] = useState(JSON.parse(localStorage.getItem('usuario'))) ;
-
-    const actualizarUsuario = (nuevoUsuario) => {
-        setUsuario(nuevoUsuario);
-        localStorage.setItem('usuario', JSON.stringify(nuevoUsuario));
-        setMostrarModalPerfil(false);
-    } 
-    
-    useEffect(() => {
-        const datos = JSON.parse(localStorage.getItem('usuario'));
-        setUsuario(datos);
-    },[]);
 
     useEffect(() => {
         const body = document.body;
@@ -39,7 +27,7 @@ export default  function Dashboard() {
           body.classList.remove('body-bloqueado'); // Activar scroll
         }
         return () => body.classList.remove('body-bloqueado');
-        }, [mostrarModalPerfil]);
+      }, [mostrarModalPerfil]);
 
     return (
         <div className="dashboard-container">
@@ -56,17 +44,13 @@ export default  function Dashboard() {
                     <Route path='/recompensas' element={<Recompensas />} />
                     <Route path='/reportes' element={<Reportes />} />
                     <Route path='/retos' element={<Retos />} />
-                    <Route path="/cuentaUsuario" element={
-                        <CuentaUsuario usuario={usuario} 
-                                        mostrarModalPerfil={() => setMostrarModalPerfil(true)} />} />
+                    <Route path="/cuentaUsuario" element={<CuentaUsuario mostrarModalPerfil={()=> setMostrarModalPerfil(true)}/>} />
+                    <Route path="/perfil" element={<PerfilUsuario />} />
                 </Routes>
                 {mostrarModalPerfil && (
                     <div className="modal-fondo">
                         <div className="modal-base">
-                        <PerfilUsuario
-                            usuario={usuario}
-                            onGuardar={actualizarUsuario} 
-                            cerrarModal={() => setMostrarModalPerfil(false)} />
+                        <PerfilUsuario cerrarModal={() => setMostrarModalPerfil(false)} />
                     </div>
                     </div>
                 )}

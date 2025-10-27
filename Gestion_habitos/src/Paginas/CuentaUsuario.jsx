@@ -4,13 +4,22 @@ import avatar from '../assets/logoPrincipalInvert.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPencil, faUser } from '@fortawesome/free-solid-svg-icons'; 
 import { faArchive, faCog } from '@fortawesome/free-solid-svg-icons';
-import { faStar, faFire } from '@fortawesome/free-solid-svg-icons';
 
-export default function CuentaUsuario({ usuario, mostrarModalPerfil }) {
-  if (!usuario) {
-    return <div className="spinner-rpg"> Cargando tu perfil aventurero...</div>;
-  }
-  
+export default function CuentaUsuario({ mostrarModalPerfil }) {
+
+
+
+  // Datos simulados del usuario (puedes reemplazar con datos reales del login)
+  const usuario = {
+    nombre: 'Vallery Miranda',
+    biografia: 'Amante del crecimiento personal y los retos diarios.',
+    genero: 'Femenino',
+    objetivo: 'Mejorar mi salud física y mental',
+    rol: 'Exploradora',
+    imagen: avatar,
+// o imagen cargada por el usuario
+  };
+
   return (
     <div className="cuenta-container">
       <h2 ><FontAwesomeIcon icon={faUser}/> Mi Cuenta</h2>
@@ -34,16 +43,9 @@ export default function CuentaUsuario({ usuario, mostrarModalPerfil }) {
       <div className="cuenta-info">
         <h3>Detalles</h3>
         <p><strong>Biografía:</strong> {usuario.biografia}</p>
-        <p><strong>Género:</strong> {usuario.Genero}</p>
-        <p><strong>Objetivo:</strong> {usuario.Objetivo}</p>
-        <p><strong>Rol RPG:</strong> {usuario.Rol}</p>
-        <p>
-          <strong><FontAwesomeIcon icon={faStar} /> Nivel:</strong> {usuario.nivel}
-        </p>
-        <p>
-          <strong><FontAwesomeIcon icon={faFire} /> Experiencia:</strong> {usuario.experiencia} XP
-        </p>
-
+        <p><strong>Género:</strong> {usuario.genero}</p>
+        <p><strong>Objetivo:</strong> {usuario.objetivo}</p>
+        <p><strong>Rol RPG:</strong> {usuario.rol}</p>
       </div>
 
     </div>
