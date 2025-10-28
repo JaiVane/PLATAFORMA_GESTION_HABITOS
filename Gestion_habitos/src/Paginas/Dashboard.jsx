@@ -13,21 +13,23 @@ import Retos from './Retos';
 import CuentaUsuario from './CuentaUsuario';
 import PerfilUsuario from './PerfilUsuario';
 import { useState,useEffect } from 'react';
+import Metas from './Metas/Metas';
 
-
-
-export default  function Dashboard() {
+export default function Dashboard() {
     const [mostrarModalPerfil, setMostrarModalPerfil] = useState(false);
+
+    // ✅ AQUI AGREGA ESTE ESTADO
+    const [habitos, setHabitos] = useState([]);   // <-- NECESARIO PARA METAS
 
     useEffect(() => {
         const body = document.body;
         if (mostrarModalPerfil) {
-          body.classList.add('body-bloqueado'); // Desactivar scroll
+          body.classList.add('body-bloqueado');
         } else {
-          body.classList.remove('body-bloqueado'); // Activar scroll
+          body.classList.remove('body-bloqueado');
         }
         return () => body.classList.remove('body-bloqueado');
-      }, [mostrarModalPerfil]);
+    }, [mostrarModalPerfil]);
 
     return (
         <div className="dashboard-container">
@@ -44,20 +46,21 @@ export default  function Dashboard() {
                     <Route path='/recompensas' element={<Recompensas />} />
                     <Route path='/reportes' element={<Reportes />} />
                     <Route path='/retos' element={<Retos />} />
-                    <Route path="/cuentaUsuario" element={<CuentaUsuario mostrarModalPerfil={()=> setMostrarModalPerfil(true)}/>} />
+                    <Route path="/cuentaUsuario" element={<CuentaUsuario mostrarModalPerfil={() => setMostrarModalPerfil(true)} />} />
                     <Route path="/perfil" element={<PerfilUsuario />} />
+
+                    {/* ✅ AQUI PASAS LOS HABITOS A METAS */}
+                    <Route path="/metas" element={<Metas habitos={habitos} />} />
                 </Routes>
+
                 {mostrarModalPerfil && (
                     <div className="modal-fondo">
                         <div className="modal-base">
                         <PerfilUsuario cerrarModal={() => setMostrarModalPerfil(false)} />
-                    </div>
+                        </div>
                     </div>
                 )}
-
-                
             </div>
         </div>
-
     );
 }

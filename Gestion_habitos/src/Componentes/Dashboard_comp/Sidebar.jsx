@@ -10,6 +10,7 @@ import {
   faPuzzlePiece,
   faMedal,
   faChartBar,
+  faStar
 } from '@fortawesome/free-solid-svg-icons';
 import imgLogo from '../../assets/logoall.png';
 
@@ -20,11 +21,12 @@ export default function Sidebar() {
     const menuItems = [
         { label: 'Inicio', icon: faHouse, path: '/dashboard/paginaPrincipal' },
         { label: 'Hábitos', icon: faClipboardList, path: '/dashboard/habitos' },
+        {label: 'Mis Metas', icon: faStar, path: '/dashboard/metas' },
         { label: 'Retos', icon: faBullseye, path: '/dashboard/retos' },
-        { label: 'Estadísticas', icon: faChartLine, path: '/dashboard/estadisticas' },
-        { label: 'Misiones', icon: faPuzzlePiece, path: '/dashboard/misiones' },
         { label: 'Recompensas', icon: faMedal, path: '/dashboard/recompensas' },
-        { label: 'Reportes', icon: faChartBar, path: '/dashboard/reportes' },
+        { label: 'Estadísticas', icon: faChartLine, path: '/dashboard/estadisticas' },
+        
+       
         
     ];
     return (

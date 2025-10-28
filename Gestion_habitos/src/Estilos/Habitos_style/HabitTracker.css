@@ -1,135 +1,108 @@
-/* Contenedor de la tabla */
+/* === HabitTracker.css === */
+
 .habit-tracker {
-  width: 95%;
-  margin: 20px auto;
-  font-family: "Poppins", sans-serif;
+  background-color: #f8faff;
+  border: 2px solid  #2d79f3;
+  border-radius: 16px;
+  padding: 20px 30px;
+  margin-top: 40px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
 
-/* Pestañas */
+.habit-tracker h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color:  #2d79f3;
+  margin-bottom: 20px;
+}
+
+/* --- Tabs --- */
 .tabs {
-  margin-bottom: 15px;
-}
-.tabs button {
-  margin-right: 8px;
-  padding: 6px 12px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  background-color: #eee;
-  transition: 0.3s;
-}
-.tabs button.active {
-  background-color: #4a90e2;
-  color: white;
-}
-.tabs button:hover {
-  background-color: #ddd;
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
 }
 
-/* Tabla */
+.tabs button {
+  background-color: #e8f0ff;
+  border: 1px solid #b5c9ff;
+  border-radius: 8px;
+  padding: 8px 18px;
+  font-weight: 600;
+  color: #1b4db1;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.tabs button:hover {
+  background-color: #d6e3ff;
+}
+
+.tabs button.active {
+  background-color: #1b4db1;
+  color: white;
+  border-color: #1b4db1;
+}
+
+/* --- Tabla --- */
 .tracker-table {
-  overflow-x: auto; /* scroll horizontal */
+  overflow-x: auto;
 }
 
 .tracker-table table {
-  border-collapse: collapse;
   width: 100%;
-  min-width: 600px;
-}
-
-.tracker-table th,
-.tracker-table td {
-  border: 1px solid #ccc;
-  padding: 8px;
+  border-collapse: collapse;
   text-align: center;
-  white-space: nowrap;
+  font-size: 0.95rem;
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
 }
 
-/* Columna fija */
-.tracker-table th:first-child,
-.tracker-table td.sticky {
-  position: sticky;
-  left: 0;
-  background-color: #f7f7f7;
-  z-index: 2;
+.tracker-table th {
+  background-color: #f0f5ff;
+  color: #1b4db1;
+  font-weight: 600;
+  padding: 10px;
+  border-bottom: 1px solid #cddfff;
 }
 
-/* Celdas marcadas */
+.tracker-table td {
+  padding: 8px;
+  border: 1px solid #e2e8f0;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.tracker-table td:hover {
+  background-color: #eef4ff;
+}
+
+/* Cuando se marca un día completado */
 .tracker-table td.done {
-  background-color: #4a90e2;
+  background-color: #4ce24a;
   color: white;
   font-weight: bold;
-  cursor: pointer;
-}
-.tracker-table td:hover {
-  cursor: pointer;
-  background-color: #d0e6ff;
+  border-color: #38fe6d;
 }
 
-/* Contenedor de la tabla */
-.habit-tracker {
-  width: 95%;
-  margin: 20px auto;
-  font-family: "Poppins", sans-serif;
-}
-
-/* Pestañas */
-.tabs {
-  margin-bottom: 15px;
-}
-.tabs button {
-  margin-right: 8px;
-  padding: 6px 12px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  background-color: #eee;
-  transition: 0.3s;
-}
-.tabs button.active {
-  background-color: #4a90e2;
-  color: white;
-}
-.tabs button:hover {
-  background-color: #ddd;
-}
-
-/* Tabla */
-.tracker-table {
-  overflow-x: auto; /* scroll horizontal */
-}
-
-.tracker-table table {
-  border-collapse: collapse;
-  width: 100%;
-  min-width: 600px;
-}
-
-.tracker-table th,
-.tracker-table td {
-  border: 1px solid #ccc;
-  padding: 8px;
-  text-align: center;
-  white-space: nowrap;
-}
-
-/* Columna fija */
-.tracker-table th:first-child,
-.tracker-table td.sticky {
+/* Columna fija del hábito */
+.tracker-table td.sticky,
+.tracker-table th:first-child {
   position: sticky;
   left: 0;
-  background-color: #f7f7f7;
+  background-color: #f0f5ff;
   z-index: 2;
+  font-weight: 600;
+  text-align: left;
+  padding-left: 10px;
+  border-right: 1px solid #cddfff;
 }
 
-/* Celdas marcadas */
-.tracker-table td.done {
-  background-color: #4a90e2;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-}
-.tracker-table td:hover {
-  cursor: pointer;
-  background-color: #d0e6ff;
+/* Texto de "No hay hábitos" */
+.tracker-table td[colspan] {
+  background-color: #f9fbff;
+  color: #7a8bb5;
+  font-style: italic;
+  padding: 20px;
 }

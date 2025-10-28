@@ -19,6 +19,7 @@ export default function Login({ onCerrar, onIrARegistro }) {
     const handleLogin = async (e) => {
       e.preventDefault();
     
+      console.log("Intentando iniciar sesión con:", { email, password });
       try {
         const data = await postData("auth/login", {
           email,
