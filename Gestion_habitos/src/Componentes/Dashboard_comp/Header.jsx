@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 export default function Header() {
 
+  //frases motivadoras
   const [frase, setFrase] = useState("");
   useEffect(() => {
     const frasesMotivadoras = [ "Hoy es un buen día para avanzar.",
@@ -34,7 +35,15 @@ export default function Header() {
     }, []);
 
 
-  const nombreUsuario ="Vallery Miranda";
+    const usuarioGuardado = JSON.parse(localStorage.getItem("usuario"));
+    const nombreUsuario = usuarioGuardado?.nombreUsuario || usuarioGuardado?.nombre || "Usuario";
+
+    const nivel = usuarioGuardado?.nivel || 1;
+    const experiencia = usuarioGuardado?.experiencia || 0;
+    const racha = usuarioGuardado?.racha || 0;
+
+
+  //fecha y hora actual formateada
   const fechaActual = new Date();
   const opcionesFecha ={
     weekday: 'long',
@@ -44,8 +53,9 @@ export default function Header() {
     minute: '2-digit',
     hour12: true,};
   const fechaFormateada = fechaActual.toLocaleString('es-Co', opcionesFecha)
+  
+  //menu usuario
   const [menuAbierto, setMenuAbierto] = useState(false);
-
   const toggleMenu = () => {
     setMenuAbierto(prev => !prev);
   };
@@ -61,9 +71,9 @@ export default function Header() {
           </div>
         </div>
         <div className="nivel-info">
-          <span>🔰 Nivel 2</span>
-          <span>⭐ 120 XP</span>
-          <span>🔥 Racha: 4 días</span>
+          <span>🔰 Nivel {nivel}</span>
+          <span>⭐ {experiencia}</span>
+          <span>🔥 Racha: {racha}</span>
         </div>
 
         <div className="header-right">
