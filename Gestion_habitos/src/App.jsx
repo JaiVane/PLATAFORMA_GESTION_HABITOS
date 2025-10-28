@@ -6,6 +6,7 @@ import Registro from './Paginas/Registro';
 import Dashboard from './Paginas/Dashboard';
 
 
+
 function App() {
   return (
     <Router>
@@ -14,6 +15,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/registro" element={<Registro />} />
         <Route path="/dashboard/*" element={<Dashboard />} />
+        
       </Routes>
     </Router>
   );

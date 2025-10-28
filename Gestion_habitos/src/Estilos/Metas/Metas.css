@@ -1,0 +1,199 @@
+/* Fondo general y estructura */
+.contenedor-metas {
+  background-color: #f7f9fc;
+  min-height: calc(100vh - 90px); /* ocupa toda la pantalla menos el encabezado */
+  overflow-y: auto; /* scroll vertical solo en el contenido */
+  overflow-x: hidden;
+  padding: 20px 40px;
+  box-sizing: border-box;
+}
+
+/* Formulario principal */
+.formulario-meta {
+  background: #f9fbff;
+  border: 1.5px solid #d6e4ff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+  padding: 25px 30px;
+  margin: 0 auto 30px auto;
+  max-width: 1200px;
+  width: 100%;
+}
+
+.formulario-meta h2 {
+  font-size: 1.6rem;
+  color: #007bff;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+/* Inputs */
+.formulario-meta input[type="text"],
+.formulario-meta input[type="date"],
+.formulario-meta textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border: 1px solid #d6e4ff;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.2s ease;
+  background-color: #fff;
+}
+
+.formulario-meta input:focus,
+.formulario-meta textarea:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 4px rgba(0, 123, 255, 0.3);
+}
+
+.formulario-meta textarea {
+  min-height: 100px;
+  resize: none;
+}
+
+/* Etiquetas y subtítulos */
+.formulario-meta label {
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.formulario-meta h4 {
+  font-weight: 600;
+  margin-top: 15px;
+  color: #222;
+}
+
+/* Lista de hábitos */
+.lista-habitos {
+  background: #f4f7ff;
+  border: 1px solid #d6e4ff;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 20px;
+}
+
+.lista-habitos p {
+  color: #555;
+}
+
+.checkbox-habito {
+  display: block;
+  margin-bottom: 8px;
+  color: #333;
+  font-size: 0.95rem;
+}
+
+.checkbox-habito input {
+  margin-right: 8px;
+}
+
+/* Botón principal */
+.formulario-meta button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.formulario-meta button:hover {
+  background-color: #0056d8;
+}
+
+/* Contenedor de lista de metas */
+.lista-metas {
+  background: #f9fbff;
+  border: 1.5px solid #d6e4ff;
+  border-radius: 12px;
+  padding: 25px 30px;
+  margin: 0 auto;
+  max-width: 1200px;
+  width: 100%;
+}
+
+.lista-metas h3 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #007bff;
+  margin-bottom: 20px;
+}
+
+/* Caja individual de meta */
+.caja-meta {
+  background: white;
+  border: 1px solid #dce6ff;
+  border-radius: 10px;
+  padding: 15px 20px;
+  margin-bottom: 15px;
+  transition: all 0.2s ease;
+}
+
+.caja-meta:hover {
+  box-shadow: 0 4px 10px rgba(0, 123, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+.caja-meta h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #222;
+}
+
+.caja-meta p {
+  margin: 5px 0;
+  color: #444;
+}
+
+/* Botones de acción */
+.acciones-meta {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.acciones-meta button {
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.acciones-meta button:first-child {
+  background-color: #007bff;
+  color: white;
+}
+
+.acciones-meta button:first-child:hover {
+  background-color: #0056d8;
+}
+
+.acciones-meta button:last-child {
+  background-color: #ff4d4f;
+  color: white;
+}
+
+.acciones-meta button:last-child:hover {
+  background-color: #d9363e;
+}
+
+/* Scroll personalizado */
+.contenedor-metas::-webkit-scrollbar {
+  width: 8px;
+}
+
+.contenedor-metas::-webkit-scrollbar-thumb {
+  background-color: #c7d6ff;
+  border-radius: 8px;
+}
+
+.contenedor-metas::-webkit-scrollbar-thumb:hover {
+  background-color: #9cb9ff;
+}

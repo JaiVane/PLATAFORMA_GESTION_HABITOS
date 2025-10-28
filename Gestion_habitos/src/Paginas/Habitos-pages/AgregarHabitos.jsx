@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import HabitTracker from './HabitTracker';
+import Metas from '../Metas/Metas';
 import '../../Estilos/Habitos_style/AgregarHabitos.css';
 
 const AgregarHabitos = () => {
