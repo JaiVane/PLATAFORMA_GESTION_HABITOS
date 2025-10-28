@@ -6,19 +6,18 @@ import { faPencil, faUser } from '@fortawesome/free-solid-svg-icons';
 import { faArchive, faCog } from '@fortawesome/free-solid-svg-icons';
 
 export default function CuentaUsuario({ mostrarModalPerfil }) {
+    // Obtener usuario del localStorage
+    const usuarioGuardado = JSON.parse(localStorage.getItem("usuario"));
 
-
-
-  // Datos simulados del usuario (puedes reemplazar con datos reales del login)
-  const usuario = {
-    nombre: 'Vallery Miranda',
-    biografia: 'Amante del crecimiento personal y los retos diarios.',
-    genero: 'Femenino',
-    objetivo: 'Mejorar mi salud física y mental',
-    rol: 'Exploradora',
-    imagen: avatar,
-// o imagen cargada por el usuario
-  };
+    // Si no hay usuario guardado, usar uno por defecto
+    const usuario = usuarioGuardado || {
+      nombre: 'Usuario no identificado',
+      biografia: 'Sin biografía',
+      genero: 'No especificado',
+      objetivo: 'Ninguno',
+      rol: 'Sin rol',
+      imagen: avatar,
+    };
 
   return (
     <div className="cuenta-container">

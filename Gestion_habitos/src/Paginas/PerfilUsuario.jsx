@@ -1,16 +1,22 @@
 import { useState,useEffect } from 'react';
 import '../Estilos/PerfilUsuario.css';
+import { putData } from '../Services/api';
 
 
 export default function PerfilUsuario({cerrarModal}) {
-  const [perfil, setPerfil] = useState({
-    nombre: 'Vallery Miranda',
+
+    // 🔹 Obtener usuario actual desde localStorage
+    const usuarioActual = JSON.parse(localStorage.getItem("usuario"));
+
+  const [perfil, setPerfil] = useState(usuarioActual || {
+    nombre: '',
     biografia: '',
     genero: '',
     objetivo: '',
     imagen: '',
     rol: '',
   });
+
   // 🔥 EFECTO CLAVE: Ocultar header cuando el modal se abre
   useEffect(() => {
     // Agregar clase al body para ocultar header
@@ -30,11 +36,45 @@ export default function PerfilUsuario({cerrarModal}) {
   const manejarImagen = (e) => {
     const archivo = e.target.files[0];
     const url = URL.createObjectURL(archivo);
-    setPerfil({ ...perfil, imagen: url });
+    setPerfil({ ...perfil, imagenPerfil: url });
   };
-  const guardarCambios = () => {
-    console.log('Datos guardados:', perfil);
-    cerrarModal();
+  const guardarCambios = async () => {
+    try {
+      const token = localStorage.getItem("token");
+    if (!token) {
+      alert("No hay token de autenticación. Inicia sesión nuevamente.");
+      return;
+    }
+
+    if (!perfil.id) {
+      alert("El perfil no tiene un ID válido.");
+      return;
+    }
+
+    // Prepara el cuerpo con los campos que se actualizan
+    const cuerpoActualizacion = {
+      nombre: perfil.nombre,
+      biografia: perfil.biografia,
+      genero: perfil.genero,
+      objetivo: perfil.objetivo,
+      imagenPerfil: perfil.imagenPerfil,
+      rol: perfil.rol
+    };
+      //  Llamar a la API para actualizar
+      const actualizado = await putData(`Usuario/usuarios/${perfil.id}/actualizar`, cuerpoActualizacion);
+
+      //  Actualizar localStorage
+      localStorage.setItem("usuario", JSON.stringify(actualizado.usuario));
+      
+
+
+      alert("Perfil actualizado correctamente ");
+      cerrarModal();
+    } catch (error) {
+      console.error("Error al actualizar el perfil:", error);
+      alert("Hubo un error al guardar los cambios ");
+    }
+
   };
   return (
     <div className="perfil-container">

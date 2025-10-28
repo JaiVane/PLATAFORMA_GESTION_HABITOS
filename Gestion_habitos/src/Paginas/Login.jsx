@@ -20,11 +20,10 @@ export default function Login({ onCerrar, onIrARegistro }) {
       e.preventDefault();
     
       try {
-        const data = await postData("auth/login", {
-          email,
-          password,
-        });
-      
+        console.log("Intentando iniciar sesión con:", { email, password });
+        const data = await postData("auth/login", {email,password,});
+        console.log("Respuesta del login:", data);
+
         // Guardar token y usuario en localStorage
         localStorage.setItem("token", data.token);
         localStorage.setItem("usuario", JSON.stringify(data.usuario));
